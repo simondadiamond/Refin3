@@ -22,12 +22,12 @@ const Content = styled.div`
 const Title = styled(motion.h1)`
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   margin-bottom: 1.5rem;
-  font-weight: 800;
-  line-height: 1.2;
+  font-weight: 900;
+  line-height: 1.1;
   color: #111827;
 
   span {
-    color: var(--accent);
+    color: #4ade80;
     display: inline;
   }
 `
@@ -53,16 +53,18 @@ const PrimaryButton = styled(motion.a)`
   display: inline-flex;
   align-items: center;
   padding: 1rem 2rem;
-  background: var(--accent);
+  background: #4ade80;
   color: white;
   border-radius: 2rem;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.1rem;
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.2s ease;
   
   &:hover {
     background: #22c55e;
+    transform: translateY(-2px);
   }
 `
 
@@ -73,13 +75,15 @@ const SecondaryButton = styled(motion.a)`
   background: #f3f4f6;
   color: #111827;
   border-radius: 2rem;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.1rem;
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.2s ease;
   
   &:hover {
     background: #e5e7eb;
+    transform: translateY(-2px);
   }
 `
 

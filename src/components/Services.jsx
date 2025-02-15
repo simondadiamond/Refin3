@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { RiRobotLine, RiSettings2Line, RiTimerLine, RiMoneyDollarCircleLine } from 'react-icons/ri';
+import { RiComputerLine, RiSettings4Line, RiTimeLine, RiBarChartLine } from 'react-icons/ri';
 
 const Section = styled.section`
   padding: 6rem 2rem;
@@ -77,22 +77,22 @@ const Description = styled.p`
 const Services = () => {
   const services = [
     {
-      icon: <RiRobotLine />,
+      icon: <RiComputerLine />,
       title: 'AI-Powered Automation',
       description: 'Leverage cutting-edge AI technology to automate complex business processes with precision and efficiency.'
     },
     {
-      icon: <RiSettings2Line />,
+      icon: <RiSettings4Line />,
       title: 'Seamless Integration',
       description: 'Easily integrate with your existing tools and workflows, including Make.com and other popular platforms.'
     },
     {
-      icon: <RiTimerLine />,
+      icon: <RiTimeLine />,
       title: 'Time-Saving Solutions',
       description: 'Reduce manual tasks and save countless hours with intelligent automation that works around the clock.'
     },
     {
-      icon: <RiMoneyDollarCircleLine />,
+      icon: <RiBarChartLine />,
       title: 'Cost-Effective',
       description: 'Minimize operational costs while maximizing productivity through smart, efficient automation solutions.'
     }

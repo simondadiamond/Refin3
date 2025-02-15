@@ -47,7 +47,7 @@ const FormGroup = styled.div`
 `
 
 const Label = styled.label`
-  font-weight: 500;
+  font-weight: 600;
   color: #374151;
 `
 
@@ -80,12 +80,12 @@ const TextArea = styled.textarea`
 
 const Button = styled(motion.button)`
   padding: 1rem;
-  background: #4ade80;
+  background: linear-gradient(135deg, #4ade80, #3b82f6);
   color: white;
   border: none;
   border-radius: 2rem;
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   width: 100%;
 
@@ -117,7 +117,7 @@ const IconWrapper = styled.div`
 
 const ContactText = styled.div`
   h3 {
-    font-weight: 600;
+    font-weight: 700;
     color: #374151;
     margin-bottom: 0.25rem;
   }

@@ -2,12 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --primary: #2563eb;
-    --secondary: #1e40af;
+    --green-gradient: linear-gradient(135deg, #4ade80 60%, #22c55e 100%);
     --text: #1f2937;
     --background: #ffffff;
-    --accent: #4ade80;
-    --font-family: 'Inter', sans-serif; /* Modern font */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   * {
@@ -19,17 +17,14 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-family: var(--font-family);
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.5;
     background: var(--background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 900;
+    letter-spacing: -0.025em;
   }
 `

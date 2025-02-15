@@ -6,7 +6,8 @@ export const GlobalStyles = createGlobalStyle`
     --secondary: #1e40af;
     --text: #1f2937;
     --background: #ffffff;
-    --accent: #3b82f6;
+    --accent: #4ade80;
+    --font-family: 'Inter', sans-serif; /* Modern font */
   }
 
   * {
@@ -16,9 +17,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-family);
     color: var(--text);
-    line-height: 1.5;
+    line-height: 1.6;
     background: var(--background);
   }
 

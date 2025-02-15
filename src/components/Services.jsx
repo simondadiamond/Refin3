@@ -1,96 +1,123 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { RiRobot2Fill, RiFlowChart, RiBarChartFill } from 'react-icons/ri';
+import { RiRobotLine, RiSettings2Line, RiTimerLine, RiMoneyDollarCircleLine } from 'react-icons/ri';
 
 const Section = styled.section`
   padding: 6rem 2rem;
-  background: #f8fafc;
+  background: white;
 `
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  text-align: center;
 `
 
 const Title = styled.h2`
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  color: var(--text);
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 1rem;
+`
+
+const Subtitle = styled.p`
+  font-size: 1.2rem;
+  color: #6b7280;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 `
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  margin-top: 3rem;
 `
 
-const Service = styled(motion.div)`
-  background: white;
+const ServiceCard = styled(motion.div)`
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background: white;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 `
 
-const Icon = styled.div`
-  font-size: 2.5rem;
-  color: var(--primary);
-  margin-bottom: 1rem;
+const IconWrapper = styled.div`
+  width: 64px;
+  height: 64px;
+  background: #ecfdf5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.75rem;
+  color: #4ade80;
 `
 
 const ServiceTitle = styled.h3`
   font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
   margin-bottom: 1rem;
-  color: var(--text);
 `
 
 const Description = styled.p`
-  color: #64748b;
+  color: #6b7280;
   line-height: 1.6;
 `
 
-const services = [
-  {
-    icon: <RiRobot2Fill />,
-    title: 'AI Workflow Automation',
-    description: 'Automate repetitive tasks and streamline your business processes with advanced AI solutions.'
-  },
-  {
-    icon: <RiFlowChart />,
-    title: 'Process Optimization',
-    description: 'Analyze and optimize your workflows for maximum efficiency and cost reduction.'
-  },
-  {
-    icon: <RiBarChartFill />,
-    title: 'Performance Analytics',
-    description: 'Get detailed insights and analytics to measure and improve your automation results.'
-  }
-];
-
 const Services = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
+  const services = [
+    {
+      icon: <RiRobotLine />,
+      title: 'AI-Powered Automation',
+      description: 'Leverage cutting-edge AI technology to automate complex business processes with precision and efficiency.'
+    },
+    {
+      icon: <RiSettings2Line />,
+      title: 'Seamless Integration',
+      description: 'Easily integrate with your existing tools and workflows, including Make.com and other popular platforms.'
+    },
+    {
+      icon: <RiTimerLine />,
+      title: 'Time-Saving Solutions',
+      description: 'Reduce manual tasks and save countless hours with intelligent automation that works around the clock.'
+    },
+    {
+      icon: <RiMoneyDollarCircleLine />,
+      title: 'Cost-Effective',
+      description: 'Minimize operational costs while maximizing productivity through smart, efficient automation solutions.'
+    }
+  ];
 
   return (
     <Section id="services">
-      <Container ref={ref}>
-        <Title>Our Services</Title>
+      <Container>
+        <Title>Empower Your Business with AI</Title>
+        <Subtitle>
+          Discover how our AI-powered automation solutions can transform your business operations.
+        </Subtitle>
         <Grid>
           {services.map((service, index) => (
-            <Service
+            <ServiceCard
               key={index}
               initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
-              <Icon>{service.icon}</Icon>
+              <IconWrapper>{service.icon}</IconWrapper>
               <ServiceTitle>{service.title}</ServiceTitle>
               <Description>{service.description}</Description>
-            </Service>
+            </ServiceCard>
           ))}
         </Grid>
       </Container>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { RiMailLine, RiPhoneLine, RiMapPinLine } from 'react-icons/ri';
+import { RiMailLine, RiMapPinLine } from 'react-icons/ri';
 
 const Section = styled.section`
   padding: 6rem 2rem;
@@ -16,7 +16,7 @@ const Container = styled.div`
 const Title = styled.h2`
   text-align: center;
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 1rem;
   color: #111827;
 `
@@ -60,7 +60,7 @@ const Input = styled.input`
   transition: border-color 0.2s;
 
   &:focus {
-    border-color: #2563eb;
+    border-color: #4ade80;
   }
 `
 
@@ -74,13 +74,13 @@ const TextArea = styled.textarea`
   transition: border-color 0.2s;
 
   &:focus {
-    border-color: #2563eb;
+    border-color: #4ade80;
   }
 `
 
 const Button = styled(motion.button)`
   padding: 1rem;
-  background: #10b981;
+  background: #4ade80;
   color: white;
   border: none;
   border-radius: 2rem;
@@ -88,10 +88,9 @@ const Button = styled(motion.button)`
   font-weight: 500;
   cursor: pointer;
   width: 100%;
-  transition: background-color 0.2s;
 
   &:hover {
-    background: #059669;
+    background: #22c55e;
   }
 `
 
@@ -113,7 +112,7 @@ const ContactItem = styled.div`
 
 const IconWrapper = styled.div`
   font-size: 1.5rem;
-  color: #2563eb;
+  color: #4ade80;
 `
 
 const ContactText = styled.div`
@@ -177,20 +176,11 @@ const Contact = () => {
           </ContactItem>
           <ContactItem>
             <IconWrapper>
-              <RiPhoneLine />
-            </IconWrapper>
-            <ContactText>
-              <h3>Phone</h3>
-              <p>+1 (555) 123-4567</p>
-            </ContactText>
-          </ContactItem>
-          <ContactItem>
-            <IconWrapper>
               <RiMapPinLine />
             </IconWrapper>
             <ContactText>
               <h3>Location</h3>
-              <p>San Francisco, CA</p>
+              <p>Quebec City, QC</p>
             </ContactText>
           </ContactItem>
         </ContactInfo>

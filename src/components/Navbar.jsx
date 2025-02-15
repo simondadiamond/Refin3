@@ -7,7 +7,7 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   z-index: 1000;
@@ -18,12 +18,12 @@ const Nav = styled.nav`
 `
 
 const Logo = styled.div`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
   
   span {
-    color: #1e40af;
+    color: #4ade80;
   }
 `
 
@@ -38,12 +38,12 @@ const NavLinks = styled.div`
 
 const NavLink = styled(motion.a)`
   font-weight: 500;
-  color: #1f2937;
+  color: #4b5563;
   text-decoration: none;
   padding: 0.5rem;
   
   &:hover {
-    color: var(--primary);
+    color: #111827;
   }
 `
 

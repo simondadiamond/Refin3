@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --green-gradient: linear-gradient(135deg, #4ade80 60%, #22c55e 100%);
+    --green-gradient: linear-gradient(135deg, #4ade80 35%, #22c55e 120%);
     --text: #1f2937;
     --background: #ffffff;
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

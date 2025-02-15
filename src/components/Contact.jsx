@@ -80,7 +80,7 @@ const TextArea = styled.textarea`
 
 const Button = styled(motion.button)`
   padding: 1rem;
-  background: linear-gradient(135deg, #4ade80, #3b82f6);
+  background: linear-gradient(135deg, #4ade80 45%, #3b82f6 125%);
   color: white;
   border: none;
   border-radius: 2rem;
@@ -90,7 +90,7 @@ const Button = styled(motion.button)`
   width: 100%;
 
   &:hover {
-    background: #22c55e;
+    opacity: 0.9;
   }
 `
 

@@ -27,7 +27,9 @@ const Title = styled(motion.h1)`
   color: #111827;
 
   span {
-    color: #4ade80;
+    background: linear-gradient(135deg, #4ade80 45%, #3b82f6 125%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     display: inline;
   }
 `
@@ -53,7 +55,7 @@ const PrimaryButton = styled(motion.a)`
   display: inline-flex;
   align-items: center;
   padding: 1rem 2rem;
-  background: #4ade80;
+  background: linear-gradient(135deg, #4ade80 45%, #3b82f6 125%);
   color: white;
   border-radius: 2rem;
   font-weight: 600;
@@ -63,7 +65,7 @@ const PrimaryButton = styled(motion.a)`
   transition: all 0.2s ease;
   
   &:hover {
-    background: #22c55e;
+    opacity: 0.9;
     transform: translateY(-2px);
   }
 `

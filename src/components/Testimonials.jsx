@@ -1,52 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Section, Container, Title, Subtitle, Card } from '../styles/components';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 
-const Section = styled.section`
-  padding: 6rem 2rem;
-  background: #f9fafb;
-`
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-`
-
-const Title = styled.h2`
-  font-size: 3rem;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
-`
-
-const Subtitle = styled.p`
-  font-size: 1.2rem;
-  color: #6b7280;
-  margin-bottom: 4rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+const TestimonialsContainer = styled(Container)`
+  // Remove max-width restriction to maintain original wide layout
 `
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    display: none; // Hide grid view on mobile
+  }
 `
 
-const TestimonialCard = styled(motion.div)`
-  background: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  text-align: left;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+const CarouselContainer = styled.div`
+  display: none;
+  position: relative;
+  width: 100%;
+  max-width: 500px; // Limit width of carousel for better mobile experience
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`
+
+const CarouselButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: ${props => props.theme.colors.darkGray};
+  border: 1px solid ${props => props.theme.colors.neonGreen};
+  color: ${props => props.theme.colors.neonGreen};
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: ${props => props.theme.colors.neonGreen};
+    color: ${props => props.theme.colors.darkGray};
+    box-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
+  }
+
+  &.prev {
+    left: 0;
+  }
+
+  &.next {
+    right: 0;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 `
 
 const Quote = styled.p`
   font-size: 1.1rem;
-  color: #374151;
+  color: ${props => props.theme.colors.text};
+  opacity: 0.9;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 `
@@ -60,31 +85,35 @@ const Author = styled.div`
 const Avatar = styled.div`
   width: 48px;
   height: 48px;
+  min-width: 48px;
   border-radius: 50%;
-  background: var(--gradient-bg);
+  background: ${props => props.theme.colors.darkGray};
+  border: 2px solid ${props => props.theme.colors.neonGreen};
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: ${props => props.theme.colors.neonGreen};
   font-weight: 600;
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.15);
 `
 
 const AuthorInfo = styled.div`
   h4 {
     font-weight: 700;
-    color: #111827;
+    color: ${props => props.theme.colors.text};
     margin-bottom: 0.25rem;
   }
   
   p {
-    color: #6b7280;
+    color: ${props => props.theme.colors.text};
+    opacity: 0.7;
     font-size: 0.9rem;
   }
 `
 
 const testimonials = [
   {
-    quote: "Refin3's AI automation has transformed our workflow efficiency. We've seen a 60% reduction in manual tasks since implementation.",
+    quote: "Techn9's AI automation has transformed our workflow efficiency. We've seen a 60% reduction in manual tasks since implementation.",
     author: "Sarah Chen",
     role: "Operations Director",
     company: "TechFlow Solutions"
@@ -96,7 +125,7 @@ const testimonials = [
     company: "InnovateX"
   },
   {
-    quote: "The cost savings and efficiency gains have been remarkable. Refin3 has revolutionized how we handle our business processes.",
+    quote: "The cost savings and efficiency gains have been remarkable. Techn9 has revolutionized how we handle our business processes.",
     author: "Emma Thompson",
     role: "CEO",
     company: "Digital Dynamics"
@@ -104,16 +133,28 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
   return (
     <Section id="testimonials">
-      <Container>
+      <TestimonialsContainer center>
         <Title>What Our Clients Say</Title>
         <Subtitle>
           Discover how businesses are transforming their operations with our AI automation solutions.
         </Subtitle>
+        
+        {/* Desktop Grid View */}
         <Grid>
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard
+            <Card
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -130,10 +171,44 @@ const Testimonials = () => {
                   <p>{testimonial.role} at {testimonial.company}</p>
                 </AuthorInfo>
               </Author>
-            </TestimonialCard>
+            </Card>
           ))}
         </Grid>
-      </Container>
+
+        {/* Mobile Carousel View */}
+        <CarouselContainer>
+          <CarouselButton className="prev" onClick={prevTestimonial}>
+            <RiArrowLeftSLine />
+          </CarouselButton>
+          
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Card>
+                <Quote>"{testimonials[currentIndex].quote}"</Quote>
+                <Author>
+                  <Avatar>
+                    {testimonials[currentIndex].author.split(' ').map(n => n[0]).join('')}
+                  </Avatar>
+                  <AuthorInfo>
+                    <h4>{testimonials[currentIndex].author}</h4>
+                    <p>{testimonials[currentIndex].role} at {testimonials[currentIndex].company}</p>
+                  </AuthorInfo>
+                </Author>
+              </Card>
+            </motion.div>
+          </AnimatePresence>
+
+          <CarouselButton className="next" onClick={nextTestimonial}>
+            <RiArrowRightSLine />
+          </CarouselButton>
+        </CarouselContainer>
+      </TestimonialsContainer>
     </Section>
   );
 };

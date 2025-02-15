@@ -8,22 +8,23 @@ const Nav = styled.nav`
   left: 0;
   right: 0;
   padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(46, 46, 46, 0.9);
   backdrop-filter: blur(10px);
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 `
 
 const Logo = styled.div`
   font-size: 1.75rem;
   font-weight: 800;
-  color: #111827;
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
   
   span {
-    color: #4ade80;
+    color: #FF3B3F;
   }
 `
 
@@ -38,12 +39,13 @@ const NavLinks = styled.div`
 
 const NavLink = styled(motion.a)`
   font-weight: 500;
-  color: #4b5563;
+  color: #FFFFFF;
   text-decoration: none;
   padding: 0.5rem;
   
   &:hover {
-    color: #111827;
+    color: #00FF99;
+    text-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
   }
 `
 
@@ -51,7 +53,7 @@ const Navbar = () => {
   return (
     <Nav>
       <Logo>
-        Refin<span>3</span>
+        Techn<span>9</span>
       </Logo>
       <NavLinks>
         <NavLink 

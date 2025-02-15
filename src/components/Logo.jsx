@@ -5,11 +5,12 @@ import { motion } from 'framer-motion'
 const LogoWrapper = styled(motion.div)`
   font-size: 2rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.neonGreen};
   margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
   
   span {
-    color: white;
+    color: ${({ theme }) => theme.colors.crimsonRed};
   }
 `
 
@@ -20,7 +21,7 @@ const Logo = () => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
     >
-      Refin<span>3</span>
+      Techn<span>9</span>
     </LogoWrapper>
   )
 }

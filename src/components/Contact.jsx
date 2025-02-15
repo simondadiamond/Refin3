@@ -2,30 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { RiMailLine, RiMapPinLine } from 'react-icons/ri';
+import { Section, Container, Title, Subtitle, Button as BaseButton } from '../styles/components';
 
-const Section = styled.section`
-  padding: 6rem 2rem;
-  background: white;
+const ContactSection = styled(Section)`
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(0, 255, 153, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
 `
 
-const Container = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-`
-
-const Title = styled.h2`
-  text-align: center;
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  color: #111827;
-`
-
-const Subtitle = styled.p`
-  text-align: center;
-  font-size: 1.2rem;
-  color: #6b7280;
-  margin-bottom: 3rem;
+const ContactContainer = styled(Container)`
+  max-width: 600px; // More focused width for better form UX
 `
 
 const Form = styled.form`
@@ -48,81 +44,82 @@ const FormGroup = styled.div`
 
 const Label = styled.label`
   font-weight: 600;
-  color: #374151;
+  color: ${props => props.theme.colors.text};
 `
 
 const Input = styled.input`
   padding: 0.75rem;
-  border: 1px solid #e5e7eb;
+  background: ${props => props.theme.colors.darkGray};
+  border: 1px solid rgba(0, 255, 153, 0.2);
   border-radius: 0.5rem;
   font-size: 1rem;
   outline: none;
-  transition: border-color 0.2s;
+  color: ${props => props.theme.colors.text};
+  transition: all 0.2s ease;
 
   &:focus {
-    border-color: #4ade80;
+    border-color: ${props => props.theme.colors.neonGreen};
+    box-shadow: 0 0 10px rgba(0, 255, 153, 0.1);
   }
 `
 
 const TextArea = styled.textarea`
   padding: 0.75rem;
-  border: 1px solid #e5e7eb;
+  background: ${props => props.theme.colors.darkGray};
+  border: 1px solid rgba(0, 255, 153, 0.2);
   border-radius: 0.5rem;
   font-size: 1rem;
   min-height: 150px;
   outline: none;
-  transition: border-color 0.2s;
+  color: ${props => props.theme.colors.text};
+  transition: all 0.2s ease;
 
   &:focus {
-    border-color: #4ade80;
+    border-color: ${props => props.theme.colors.neonGreen};
+    box-shadow: 0 0 10px rgba(0, 255, 153, 0.1);
   }
 `
 
-const Button = styled(motion.button)`
-  padding: 1rem;
-  background: linear-gradient(135deg, #4ade80 45%, #3b82f6 125%);
-  color: white;
-  border: none;
-  border-radius: 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  width: 100%;
-
-  &:hover {
-    opacity: 0.9;
-  }
+const SubmitButton = styled(BaseButton)`
+  width: auto; // Allow button to size to content
+  padding: 1rem 3rem; // Wider padding for better button proportions
+  margin: 0 auto; // Center the button
+  display: block; // Ensure margin auto works
+  font-size: 1rem; // Consistent font size
+  letter-spacing: 0.5px; // Improve text readability
 `
 
 const ContactInfo = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid rgba(0, 255, 153, 0.1);
+  flex-wrap: wrap;
 `
 
 const ContactItem = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: #6b7280;
+  color: ${props => props.theme.colors.text};
 `
 
 const IconWrapper = styled.div`
   font-size: 1.5rem;
-  color: #4ade80;
+  color: ${props => props.theme.colors.neonGreen};
 `
 
 const ContactText = styled.div`
   h3 {
     font-weight: 700;
-    color: #374151;
+    color: ${props => props.theme.colors.text};
     margin-bottom: 0.25rem;
   }
   p {
     font-size: 0.95rem;
+    opacity: 0.8;
   }
 `
 
@@ -133,8 +130,8 @@ const Contact = () => {
   };
 
   return (
-    <Section id="contact">
-      <Container>
+    <ContactSection id="contact">
+      <ContactContainer center>
         <Title>Get Started Today</Title>
         <Subtitle>
           Ready to transform your business with AI automation? Contact us to learn more.
@@ -155,13 +152,14 @@ const Contact = () => {
             <Label>Message</Label>
             <TextArea placeholder="How can we help you?" />
           </FormGroup>
-          <Button
+          <SubmitButton
+            as={motion.button}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
           >
             Send Message
-          </Button>
+          </SubmitButton>
         </Form>
 
         <ContactInfo>
@@ -171,7 +169,7 @@ const Contact = () => {
             </IconWrapper>
             <ContactText>
               <h3>Email</h3>
-              <p>contact@refin3.com</p>
+              <p>contact@techn9.com</p>
             </ContactText>
           </ContactItem>
           <ContactItem>
@@ -184,8 +182,8 @@ const Contact = () => {
             </ContactText>
           </ContactItem>
         </ContactInfo>
-      </Container>
-    </Section>
+      </ContactContainer>
+    </ContactSection>
   );
 };
 

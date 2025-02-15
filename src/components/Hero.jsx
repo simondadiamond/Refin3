@@ -1,47 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { Section, Container, Title, Subtitle, Button } from '../styles/components';
 
-const HeroSection = styled.section`
+const HeroSection = styled(Section)`
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  position: relative;
   text-align: center;
-  background: white;
-`
-
-const Content = styled.div`
-  max-width: 1000px;
+  background: ${props => props.theme.colors.background};
   position: relative;
-  z-index: 1;
-`
+  overflow: hidden;
 
-const Title = styled(motion.h1)`
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  margin-bottom: 1.5rem;
-  font-weight: 900;
-  line-height: 1.1;
-  color: #111827;
-
-  span {
-    background: linear-gradient(135deg, #4ade80 45%, #3b82f6 125%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(0, 255, 153, 0.1) 0%, transparent 70%);
+    pointer-events: none;
   }
-`
-
-const Subtitle = styled(motion.p)`
-  font-size: clamp(1.1rem, 2vw, 1.25rem);
-  margin-bottom: 3rem;
-  color: #6b7280;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
 `
 
 const ButtonGroup = styled.div`
@@ -51,48 +32,10 @@ const ButtonGroup = styled.div`
   align-items: center;
 `
 
-const PrimaryButton = styled(motion.a)`
-  display: inline-flex;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, #4ade80 45%, #3b82f6 125%);
-  color: white;
-  border-radius: 2rem;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-  }
-`
-
-const SecondaryButton = styled(motion.a)`
-  display: inline-flex;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: #f3f4f6;
-  color: #111827;
-  border-radius: 2rem;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    background: #e5e7eb;
-    transform: translateY(-2px);
-  }
-`
-
 const Hero = () => {
   return (
     <HeroSection>
-      <Content>
+      <Container>
         <Title
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -105,25 +48,26 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Transform your business operations with cutting-edge AI automation. Save time, reduce costs, and scale efficiently with Refin3.
+          Transform your business operations with cutting-edge AI automation. Save time, reduce costs, and scale efficiently with Techn9.
         </Subtitle>
         <ButtonGroup>
-          <PrimaryButton
+          <Button
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Get Started →
-          </PrimaryButton>
-          <SecondaryButton
+          </Button>
+          <Button
             href="#services"
+            secondary
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Learn More
-          </SecondaryButton>
+          </Button>
         </ButtonGroup>
-      </Content>
+      </Container>
     </HeroSection>
   );
 };

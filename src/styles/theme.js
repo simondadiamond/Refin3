@@ -1,11 +1,13 @@
 const theme = {
   colors: {
-    primary: '#6366F1',
-    secondary: '#4F46E5',
-    background: '#FFFFFF',
-    text: '#1F2937',
-    lightGray: '#F3F4F6',
-    darkGray: '#4B5563'
+    primary: '#00FF99',
+    secondary: '#FF3B3F',
+    background: '#2E2E2E',
+    text: '#FFFFFF',
+    lightGray: '#3E3E3E',
+    darkGray: '#1E1E1E',
+    neonGreen: '#00FF99',
+    crimsonRed: '#FF3B3F'
   },
   breakpoints: {
     mobile: '640px',

@@ -7,8 +7,8 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-  padding: 1.5rem 2rem;
-  background: rgba(46, 46, 46, 0.9);
+  padding: 1rem 2rem;
+  background: rgba(46, 46, 46, 0.95);
   backdrop-filter: blur(10px);
   z-index: 1000;
   display: flex;
@@ -18,13 +18,14 @@ const Nav = styled.nav`
 `
 
 const Logo = styled.div`
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  color: #FFFFFF;
-  text-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+  color: ${props => props.theme.colors.text};
+  text-shadow: ${props => props.theme.colors.glowCyan};
   
   span {
-    color: #FF3B3F;
+    color: ${props => props.theme.colors.neonCyan};
+    text-shadow: ${props => props.theme.colors.glowCyan};
   }
 `
 
@@ -39,13 +40,14 @@ const NavLinks = styled.div`
 
 const NavLink = styled(motion.a)`
   font-weight: 500;
-  color: #FFFFFF;
+  color: ${props => props.theme.colors.text};
   text-decoration: none;
   padding: 0.5rem;
+  font-size: 0.95rem;
   
   &:hover {
-    color: #00FF99;
-    text-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+    color: ${props => props.theme.colors.neonCyan};
+    text-shadow: ${props => props.theme.colors.glowCyan};
   }
 `
 

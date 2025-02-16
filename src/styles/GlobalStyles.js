@@ -2,11 +2,14 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --neon-green: #00FF99;
-    --crimson-red: #FF3B3F;
+    --electric-blue: #007BFF;
+    --midnight-navy: #1A1F36;
     --graphite-gray: #2E2E2E;
+    --silver-gray: #B0BEC5;
+    --neon-green: #00FF99;
+    --neon-cyan: #00E7FF;
     --text: #FFFFFF;
-    --background: #2E2E2E;
+    --background: #1A1F36;
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
@@ -32,12 +35,22 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    color: var(--neon-green);
+    color: var(--neon-cyan);
     text-decoration: none;
     transition: all 0.3s ease;
 
     &:hover {
-      text-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+      color: var(--neon-green);
+      text-shadow: 0 0 10px rgba(0, 231, 255, 0.5);
     }
+  }
+
+  button {
+    font-family: var(--font-family);
+  }
+
+  ::selection {
+    background: var(--neon-cyan);
+    color: var(--midnight-navy);
   }
 `

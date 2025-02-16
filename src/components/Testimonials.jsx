@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Section, Container, Title, Subtitle, Card } from '../styles/components';
+import { Section, Container, Title, Subtitle, Card, Avatar } from '../styles/components';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
@@ -36,8 +36,8 @@ const CarouselButton = styled.button`
   top: 50%;
   transform: translateY(-50%);
   background: ${props => props.theme.colors.darkGray};
-  border: 1px solid ${props => props.theme.colors.neonGreen};
-  color: ${props => props.theme.colors.neonGreen};
+  border: 1px solid ${props => props.theme.colors.neonCyan};
+  color: ${props => props.theme.colors.neonCyan};
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -49,9 +49,9 @@ const CarouselButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    background: ${props => props.theme.colors.neonGreen};
+    background: ${props => props.theme.colors.neonCyan};
     color: ${props => props.theme.colors.darkGray};
-    box-shadow: 0 0 15px rgba(0, 255, 153, 0.3);
+    box-shadow: ${props => props.theme.colors.glowCyan};
   }
 
   &.prev {
@@ -80,21 +80,6 @@ const Author = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-`
-
-const Avatar = styled.div`
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  border-radius: 50%;
-  background: ${props => props.theme.colors.darkGray};
-  border: 2px solid ${props => props.theme.colors.neonGreen};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${props => props.theme.colors.neonGreen};
-  font-weight: 600;
-  box-shadow: 0 0 10px rgba(0, 255, 153, 0.15);
 `
 
 const AuthorInfo = styled.div`

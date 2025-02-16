@@ -5,12 +5,13 @@ import { motion } from 'framer-motion'
 const LogoWrapper = styled(motion.div)`
   font-size: 2rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.neonGreen};
+  color: ${props => props.theme.colors.neonCyan};
   margin-bottom: 2rem;
-  text-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+  text-shadow: ${props => props.theme.colors.glowCyan};
   
   span {
-    color: ${({ theme }) => theme.colors.crimsonRed};
+    color: ${props => props.theme.colors.primary};
+    text-shadow: ${props => props.theme.colors.glowBlue};
   }
 `
 

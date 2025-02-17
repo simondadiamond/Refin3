@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
-import { Section, Container, Title, Subtitle, Card, Avatar } from '../styles/components';
+import { Section, Container, Title, Subtitle, Card, Avatar, Grid, Quote, Author, AuthorInfo } from '../styles/components';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 
-const TestimonialsContainer = styled(Container)`
-  // Remove max-width restriction to maintain original wide layout
+// Create a styled section specifically for Testimonials
+const TestimonialsSection = styled(Section)`
+  background: ${({ theme }) => theme.isDark ? '#1A1F36' : theme.cardBg}; /* Conditional background */
 `
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-
-  @media (max-width: 768px) {
-    display: none; // Hide grid view on mobile
-  }
+const TestimonialsContainer = styled(Container)`
+  // Remove max-width restriction to maintain original wide layout
 `
 
 const CarouselContainer = styled.div`
@@ -35,9 +30,9 @@ const CarouselButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: ${props => props.theme.colors.darkGray};
-  border: 1px solid ${props => props.theme.colors.neonCyan};
-  color: ${props => props.theme.colors.neonCyan};
+  background: ${({ theme }) => theme.darkGray};
+  border: 1px solid ${({ theme }) => theme.neonCyan};
+  color: ${({ theme }) => theme.neonCyan};
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -49,9 +44,9 @@ const CarouselButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    background: ${props => props.theme.colors.neonCyan};
-    color: ${props => props.theme.colors.darkGray};
-    box-shadow: ${props => props.theme.colors.glowCyan};
+    background: ${({ theme }) => theme.neonCyan};
+    color: ${({ theme }) => theme.darkGray};
+    box-shadow: ${({ theme }) => theme.glowCyan};
   }
 
   &.prev {
@@ -65,34 +60,6 @@ const CarouselButton = styled.button`
   svg {
     width: 24px;
     height: 24px;
-  }
-`
-
-const Quote = styled.p`
-  font-size: 1.1rem;
-  color: ${props => props.theme.colors.text};
-  opacity: 0.9;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-`
-
-const Author = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`
-
-const AuthorInfo = styled.div`
-  h4 {
-    font-weight: 700;
-    color: ${props => props.theme.colors.text};
-    margin-bottom: 0.25rem;
-  }
-  
-  p {
-    color: ${props => props.theme.colors.text};
-    opacity: 0.7;
-    font-size: 0.9rem;
   }
 `
 
@@ -129,7 +96,7 @@ const Testimonials = () => {
   };
 
   return (
-    <Section id="testimonials">
+    <TestimonialsSection id="testimonials">
       <TestimonialsContainer center>
         <Title>What Our Clients Say</Title>
         <Subtitle>
@@ -145,6 +112,7 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
+              style={{ background: '#2D2D3A', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)' }} // Updated styles
             >
               <Quote>"{testimonial.quote}"</Quote>
               <Author>
@@ -174,7 +142,7 @@ const Testimonials = () => {
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.3 }}
             >
-              <Card>
+              <Card style={{ background: '#2D2D3A', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)' }}>
                 <Quote>"{testimonials[currentIndex].quote}"</Quote>
                 <Author>
                   <Avatar>
@@ -194,7 +162,7 @@ const Testimonials = () => {
           </CarouselButton>
         </CarouselContainer>
       </TestimonialsContainer>
-    </Section>
+    </TestimonialsSection>
   );
 };
 

@@ -9,7 +9,7 @@ const HeroSection = styled(Section)`
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: ${props => props.theme.colors.background};
+  background: ${({ theme }) => theme.background};
   position: relative;
   overflow: hidden;
 

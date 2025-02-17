@@ -1,24 +1,14 @@
-// Update the Button usage in Contact.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { RiMailLine, RiMapPinLine } from 'react-icons/ri';
-import { 
-  Section,
-  Container,
-  Title,
-  Subtitle,
-  Button,
-  Form,
-  FormRow,
-  FormGroup,
-  Label,
-  Input,
-  TextArea,
-  ContactInfo,
-  ContactItem,
-  ContactIconWrapper,
-  ContactText
-} from '../styles/components';
+import { Section, Container, Title, Subtitle, Button, Form, FormRow, FormGroup, Label, Input, TextArea, ContactInfo, ContactItem, ContactIconWrapper, ContactText } from '../styles/components';
+import styled from 'styled-components';
+
+// Create a styled section specifically for Contact
+const ContactSection = styled(Section)`
+  background: ${({ theme }) => theme.isDark ? '#1A1F36' : theme.cardBg}; /* Conditional background */
+  padding: 60px 0; /* Add vertical spacing */
+`
 
 const Contact = () => {
   const handleSubmit = (e) => {
@@ -26,9 +16,9 @@ const Contact = () => {
   };
 
   return (
-    <Section id="contact">
+    <ContactSection id="contact">
       <Container center>
-        <Title>Get Started Today</Title>
+        <Title>Get in Touch</Title>
         <Subtitle>
           Ready to transform your business with AI automation? Contact us to learn more.
         </Subtitle>
@@ -79,7 +69,7 @@ const Contact = () => {
           </ContactItem>
         </ContactInfo>
       </Container>
-    </Section>
+    </ContactSection>
   );
 };
 

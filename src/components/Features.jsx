@@ -6,25 +6,28 @@ import { RiRobot2Line, RiTimeLine, RiLineChartLine } from 'react-icons/ri'
 
 const Section = styled.section`
   padding: 6rem 2rem;
-  background: ${({ theme }) => theme.colors.lightGray};
+  background: ${({ theme }) => theme.background};
 `
 
 const Container = styled.div`
   max-width: 1200px;
+	background: ${({ theme }) => theme.background } ;
   margin: 0 auto;
 `
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	background: ${({ theme }) => theme.background } ;
   gap: 2rem;
   margin-top: 3rem;
 `
 
 const Feature = styled(motion.div)`
-  background: white;
+  background: ${({ theme }) => theme.background } ;
   padding: 2rem;
   border-radius: 8px;
+  background: ${({ theme }) => theme.isDark ? theme.primary : theme.primary};
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `
 
@@ -41,6 +44,7 @@ const Title = styled.h3`
 
 const Description = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
+	background: ${({ theme }) => theme.background } ;
 `
 
 const features = [

@@ -1,26 +1,11 @@
 import React from 'react';
 import { RiComputerLine, RiSettings4Line, RiTimeLine, RiBarChartLine } from 'react-icons/ri';
-import { Section, Container, Title, Subtitle, Card, IconWrapper } from '../styles/components';
+import { Section, Container, Title, Subtitle, Card, IconWrapper, Grid, ServiceTitle, Description } from '../styles/components';
 import styled from 'styled-components';
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-`
-
-const ServiceTitle = styled.h3`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: ${props => props.theme.colors.text};
-  margin-bottom: 1rem;
-`
-
-const Description = styled.p`
-  color: ${props => props.theme.colors.text};
-  opacity: 0.8;
-  line-height: 1.6;
+// Create a styled section specifically for Services/Features
+const ServicesSection = styled(Section)`
+  background: ${({ theme }) => theme.isDark ? '#1A1F36' : theme.cardBg}; /* Conditional background */
 `
 
 const services = [
@@ -48,7 +33,7 @@ const services = [
 
 const Services = () => {
   return (
-    <Section id="services">
+    <ServicesSection id="services">
       <Container center>
         <Title>Empower Your Business with AI</Title>
         <Subtitle>
@@ -63,6 +48,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
+              style={{ background: '#2D2D3A', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)' }} // Updated styles
             >
               <IconWrapper center>{service.icon}</IconWrapper>
               <ServiceTitle>{service.title}</ServiceTitle>
@@ -71,7 +57,7 @@ const Services = () => {
           ))}
         </Grid>
       </Container>
-    </Section>
+    </ServicesSection>
   );
 };
 

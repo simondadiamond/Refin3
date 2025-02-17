@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { RiMoonLine, RiSunLine } from 'react-icons/ri'; // Importing the icons
 
 const Nav = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem; /* Reduced padding for a less thick navbar */
   background: rgba(46, 46, 46, 0.95);
   backdrop-filter: blur(10px);
   z-index: 1000;
@@ -20,12 +21,12 @@ const Nav = styled.nav`
 const Logo = styled.div`
   font-size: 1.5rem;
   font-weight: 800;
-  color: ${props => props.theme.colors.text};
-  text-shadow: ${props => props.theme.colors.glowCyan};
+  color: #ffffff; 
+  text-shadow: ${({ theme }) => theme.glowCyan};
   
   span {
-    color: ${props => props.theme.colors.neonCyan};
-    text-shadow: ${props => props.theme.colors.glowCyan};
+    color: #00CC66; /* Fixed color for the "9" */
+    text-shadow: ${({ theme }) => theme.glowCyan};
   }
 `
 
@@ -40,18 +41,34 @@ const NavLinks = styled.div`
 
 const NavLink = styled(motion.a)`
   font-weight: 500;
-  color: ${props => props.theme.colors.text};
+  color: ${({ theme, isDarkMode }) => isDarkMode ? theme.text : 'white'}; /* Set color based on theme */
   text-decoration: none;
   padding: 0.5rem;
   font-size: 0.95rem;
   
   &:hover {
-    color: ${props => props.theme.colors.neonCyan};
-    text-shadow: ${props => props.theme.colors.glowCyan};
+    color: ${({ theme }) => theme.neonCyan};
+    text-shadow: ${({ theme }) => theme.glowCyan};
   }
 `
 
-const Navbar = () => {
+const ThemeToggle = styled.button`
+  background: none;
+  border: none;
+  color: white; /* Set color to white for both modes */
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.neonCyan};
+  }
+`
+
+const Navbar = ({ toggleTheme, isDarkMode }) => {
   return (
     <Nav>
       <Logo>
@@ -62,6 +79,7 @@ const Navbar = () => {
           href="#services"
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.95 }}
+          isDarkMode={isDarkMode} // Pass the isDarkMode prop
         >
           Services
         </NavLink>
@@ -69,9 +87,13 @@ const Navbar = () => {
           href="#contact"
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.95 }}
+          isDarkMode={isDarkMode} // Pass the isDarkMode prop
         >
           Contact
         </NavLink>
+        <ThemeToggle onClick={toggleTheme}>
+          {isDarkMode ? <RiSunLine /> : <RiMoonLine />}
+        </ThemeToggle>
       </NavLinks>
     </Nav>
   );

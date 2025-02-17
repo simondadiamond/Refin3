@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-    import { Section, Container, Title, Subtitle, Card, Avatar, Grid, Quote, Author, AuthorInfo } from '../styles/components';
+    import { Section, Container, Title, Subtitle, Card, Avatar, Quote, Author, AuthorInfo } from '../styles/components';
     import styled from 'styled-components';
     import { motion, AnimatePresence } from 'framer-motion';
     import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
@@ -60,6 +60,17 @@ import React, { useState } from 'react';
       svg {
         width: 24px;
         height: 24px;
+      }
+    `;
+
+    const Grid = styled.div`
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+
+      @media (max-width: 768px) {
+        display: none; // Hide grid on mobile
       }
     `;
 
@@ -138,7 +149,7 @@ import React, { useState } from 'react';
             </CarouselContainer>
 
             {/* Desktop Grid View */}
-            <Grid className="desktop-grid" style={{ display: 'none' }}>
+            <Grid>
               {testimonials.map((testimonial, index) => (
                 <Card
                   key={index}

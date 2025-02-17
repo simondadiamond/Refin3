@@ -13,6 +13,7 @@ import {
   NewsletterForm,
   Input,
   Button,
+	ButtonDarkBg,
   BottomBar,
   Copyright,
   LegalLinks,
@@ -74,14 +75,14 @@ const Footer = () => {
                 placeholder="Enter your email"
                 aria-label="Email Address"
               />
-              <Button
+              <ButtonDarkBg
                 type="submit"
 								secondary
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Sign Up
-              </Button>
+              </ButtonDarkBg>
             </NewsletterForm>
           </Column>
         </Grid>

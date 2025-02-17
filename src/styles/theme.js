@@ -6,6 +6,7 @@ const theme = {
     cardBg: '#FFFFFF', // White for cards
     darkGray: '#2E2E2E',
     isDark: false,
+		inputbg: '#F0F0F0',
 
     // Accent Colors
     neonGreen: '#00CC66', // Cyber Green
@@ -14,6 +15,7 @@ const theme = {
     // Text Colors
     text: '#333333', // Dark text for readability
     textSecondary: '#555555', // Lighter text for secondary content
+		textwhite: '#F0F0F0',
 
     // Additional UI Colors
     borderColor: 'rgba(0, 204, 102, 0.2)',
@@ -33,6 +35,7 @@ const theme = {
     cardBg: '#2D2D3A', // Slightly lighter dark shade for cards
     darkGray: '#2E2E2E',
     isDark: true,
+		inputbg: '#2E2E2E',
 
     // Accent Colors
     neonGreen: '#00FF99', // Cyber Green
@@ -41,6 +44,7 @@ const theme = {
     // Text Colors
     text: '#F0F0F0', // Near-white for text
     textSecondary: '#FFFFFF', // White for secondary text
+		textwhite: '#F0F0F0',
 
     // Additional UI Colors
     borderColor: 'rgba(0, 255, 153, 0.2)',
